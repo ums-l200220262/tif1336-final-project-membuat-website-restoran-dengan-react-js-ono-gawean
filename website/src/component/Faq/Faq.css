@@ -1,27 +1,33 @@
-/* Faq.css */
+.faq-section {
+  padding: 40px 20px; /* Padding for the FAQ section */
+  background-color: #2c2c2c; /* Dark background for the FAQ section */
+  color: #ffffff; /* White text for contrast */
+}
 
-.faq-container {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .faq-item {
-    margin-bottom: 20px;
-  }
-  
-  .faq-question {
-    background-color: #007bff;
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .faq-answer {
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
+.faq-title {
+  text-align: center; /* Center align the title */
+  font-size: 2.5rem; /* Increase font size for the title */
+  margin-bottom: 30px; /* Space below the title */
+}
+
+.accordion-button {
+  background-color: #3a3a3a; /* Dark background for accordion buttons */
+  color: #ffffff; /* White text for accordion buttons */
+  border: none; /* Remove border */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.accordion-button:hover {
+  background-color: #4a4a4a; /* Change background color on hover */
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #007bff; /* Change background color when expanded */
+  color: #ffffff; /* White text when expanded */
+}
+
+.accordion-body {
+  background-color: #3a3a3a; /* Dark background for accordion body */
+  color: #e0e0e0; /* Light gray text for accordion body */
+  border: none; /* Remove border */
+}

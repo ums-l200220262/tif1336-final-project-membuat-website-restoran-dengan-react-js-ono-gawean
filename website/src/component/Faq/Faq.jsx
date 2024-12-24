@@ -1,5 +1,6 @@
-import { Accordion, Row, Col } from 'react-bootstrap';
+import { Accordion, Row, Col, Container } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
+import './Faq.css';
 
 const Faq = () => {
   const [faq, setFaq] = useState([]);
@@ -11,31 +12,32 @@ const Faq = () => {
       })
       .then((data) => {
         setFaq(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching FAQ data:', error);
       });
   };
 
-  
   useEffect(() => {
     fetchFaqData();
   }, []);
+
   return (
-    <div className="pb-4" id='faq'>
-      <Row lg={2}>
-        {faq.map((faq) => {
-          return (
-            <Col md={4} className="pt-4" key={faq.id}>
-              <Accordion defaultActiveKey="0">
-                <Accordion.Item eventKey="0">
-                  <Accordion.Header>{faq.question}</Accordion.Header>
-                  <Accordion.Body>{faq.answer}
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </Col>
-          );
-        })}
+    <Container className="faq-section" id='faq'>
+      <h2 className="faq-title">Frequently Asked Questions</h2>
+      <Row>
+        {faq.map((item) => (
+          <Col md={6} className="pt-4" key={item.id}>
+            <Accordion defaultActiveKey="0">
+              <Accordion.Item eventKey={item.id.toString()}>
+                <Accordion.Header>{item.question}</Accordion.Header>
+                <Accordion.Body>{item.answer}</Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          </Col>
+        ))}
       </Row>
-    </div>
+    </Container>
   );
 };
 

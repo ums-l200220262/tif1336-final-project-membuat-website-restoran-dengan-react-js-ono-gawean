@@ -5,8 +5,43 @@
 ### 2. L200220268 Abdullah Tsaqif
 ### 3. L200220282 Aditiya Ari Wicaksono
 ### 4. L200220284 Satria Bintang Bagus Pratama
-### 5. L200XXXXXX Alief
+### 5. L200220281 Muhammad Alief Adhitiya Pratama
 ### 6. L200220244 Tuhu Atmana
+
+### JOBDESK
+misalnya gini jobdesknya
+
+Afrizal :
+Mengimplementasikan desain ke dalam kode (Home(jsx& css), Menus(jsx))
+Menerapkan Frontend
+Desain
+Menangani responsif
+Memperbaiki tata letak
+
+Ari :
+Mengambil API
+Memperbaiki bug
+menerapkan Backend (venv, server)
+
+Alip : 
+Mengimplementasikan desain ke dalam kode (Faq(jsx& css), Footer(jsx& css))
+Menerapkan Frontend
+Desain
+Menangani responsif
+Memperbaiki tata letak
+Membuat Dokumentasi
+
+Tuhu :
+Mengimplementasikan desain ke dalam kode (Navar(jsx& css), Menus(css))
+Menerapkan Frontend
+Desain
+Menangani responsif
+Memperbaiki tata letak
+
+Satria:
+Mengambil API
+Memperbaiki bug
+menerapkan Backend (koneksi)
 
 #### Alamat Website yang dibuat
 - Frontend: \<Tuliskan alamat website Anda\>
@@ -45,4 +80,6 @@ cd .\website\
 
 bash
 npm start
+
+
 

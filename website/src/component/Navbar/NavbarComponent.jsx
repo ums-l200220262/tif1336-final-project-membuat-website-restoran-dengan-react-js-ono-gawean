@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-scroll';
-import './Navbar.css';
+import { FaBars } from 'react-icons/fa';
+import './NavbarComponent.css';
 
 const NavbarComponent = () => {
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [scrolled, setScrolled] = useState(false); // State to track scroll
 
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
         const response = await fetch('http://localhost:8000/api/profile/');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const data = await response.json();
         setProfile(data);
       } catch (error) {
         console.error('Error fetching profile data:', error);
+        setError('Failed to load profile data. Please try again later.');
       } finally {
         setLoading(false);
       }
@@ -23,42 +30,62 @@ const NavbarComponent = () => {
     fetchProfileData();
   }, []);
 
+  // Handle scroll event
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 50) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div style={{ position: 'sticky', top: 0, zIndex: 1000 }}>
+    <div className={`navbar-wrapper ${scrolled ? 'scrolled' : ''}`}> {/* Add scrolled class */}
       {loading ? (
-        <p>Loading...</p>
+        <div className="loading-spinner">Loading...</div>
+      ) : error ? (
+        <div className="error-message">{error}</div>
       ) : (
         profile.map((profileData, index) => (
-          <Navbar key={index} bg="light" variant="light" expand="lg">
+          <Navbar key={index} expand="lg" className="custom-navbar">
             <Container>
-              <Navbar.Brand>
+              <Navbar.Brand className="brand-container">
                 <img
-                  alt=""
+                  alt="Logo"
                   src={profileData.logo}
-                  style={{
-                    width: '50px',
-                    height: '50px',
-                  }}
+                  className="navbar-logo"
                 />
-                {profileData.name}
+                <span className="brand-name">{profileData.name}</span>
               </Navbar.Brand>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
+              
+              <Navbar.Toggle aria-controls="main-navbar-nav">
+                <FaBars />
+              </Navbar.Toggle>
 
-                <Nav.Link as={Link} to="home" smooth={true} duration={500}>
+              <Navbar.Collapse id="main-navbar-nav">
+                <Nav className="ms-auto">
+                  <Nav.Link as={Link} to="home" smooth={true} duration={500}>
                     Home
                   </Nav.Link>
-                  <NavDropdown title="Menu" id="basic-nav-dropdown">
-                    <Link to="utama-menu" smooth={true} duration={500}>
-                      <NavDropdown.Item>Menu Utama</NavDropdown.Item>
-                    </Link>
-                    <Link to="pembuka-menu" smooth={true} duration={500}>
-                      <NavDropdown.Item>Menu Pembuka</NavDropdown.Item>
-                    </Link>
-                    <Link to="penutup-menu" smooth={true} duration={500}>
-                      <NavDropdown.Item>Menu Penutup</NavDropdown.Item>
-                    </Link>
+                  
+                  <NavDropdown title="Menu" id="navbar-menu-dropdown">
+                    <NavDropdown.Item as={Link} to="utama-menu" smooth={true} duration={500}>
+                      Menu Utama
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="pembuka-menu" smooth={true} duration={500}>
+                      Menu Pembuka
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="penutup-menu" smooth={true} duration={500}>
+                      Menu Penutup
+                    </NavDropdown.Item>
                   </NavDropdown>
 
                   <Nav.Link as={Link} to="faq" smooth={true} duration={500}>
@@ -69,7 +96,6 @@ const NavbarComponent = () => {
                     Contact Us
                   </Nav.Link>
                 </Nav>
-                
               </Navbar.Collapse>
             </Container>
           </Navbar>

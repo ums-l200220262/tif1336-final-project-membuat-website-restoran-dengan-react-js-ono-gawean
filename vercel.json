@@ -1,24 +1,12 @@
 {
+    "version":2,
+    "builds": [
+    { "src": "*.js", "use": "@vercel/node" }
+    ],
     "routes": [
         {
-            "src": "/",
-            "dest": "/"
-        },
-        {
-            "src": "/Faq",
-            "dest": "/"
-        },
-        {
-            "src": "/Footer",
-            "dest": "/"
-        },
-        {
-            "src": "/Menus",
-            "dest": "/"
-        },
-        {
-            "src": "/Navbar",
-            "dest": "/"
+        "src": "/(.*)",
+        "dest": "/"
         }
     ]
 }

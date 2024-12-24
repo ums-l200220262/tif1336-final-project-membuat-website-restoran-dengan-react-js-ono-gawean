@@ -5,19 +5,19 @@
             "dest": "/"
         },
         {
-            "src": "/",
+            "src": "/Faq",
             "dest": "/"
         },
         {
-            "src": "/",
+            "src": "/Footer",
             "dest": "/"
         },
         {
-            "src": "/",
+            "src": "/Menus",
             "dest": "/"
         },
         {
-            "src": "/",
+            "src": "/Navbar",
             "dest": "/"
         }
     ]

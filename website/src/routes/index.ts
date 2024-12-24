@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: Navbar(),
-    },
+    }
 ]);
 
 export { router };

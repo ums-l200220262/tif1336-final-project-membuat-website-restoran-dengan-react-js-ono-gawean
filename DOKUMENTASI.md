@@ -4,7 +4,7 @@
 ### 1. L200220262 Afrizal Putra Pratama
 ### 2. L200220268 Abdullah Tsaqif
 ### 3. L200220282 Aditiya Ari Wicaksono
-### 4. L200XXXXXX Satria Bintang Bagus Pratama
+### 4. L200220284 Satria Bintang Bagus Pratama
 ### 5. L200XXXXXX Alief
 ### 6. L200220244 Tuhu Atmana
 
